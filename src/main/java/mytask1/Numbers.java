@@ -7,8 +7,14 @@ public class Numbers {
 
     static int[] arr = new int[100];
     static int index = 0;
+    static final String MESSAGE_1 = " Your number is too small. Please try again..";
+    static final String MESSAGE_2 = " Your number is too big. Please, try again..";
 
     public static void main(String[] args) {
+        startToGame();
+    }
+
+    public static void startToGame() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Start game.");
         System.out.println("Please enter your name: ");
@@ -20,26 +26,21 @@ public class Numbers {
             System.out.println("Please enter your number:");
             int yourNumber = scanner.nextInt();
             scanner.nextLine();
+            saveNumber(yourNumber);
             if (programNumber > yourNumber) {
-                System.out.println("Program number :" + programNumber + " Your number:" + yourNumber + " Your number is too small. Please try again..");
-                System.out.println("Type 0 to back   or enter something to exit:");
-                b = scanner.nextInt();
-                scanner.nextLine();
+                System.out.println("Program number :" + programNumber + " Your number:" + yourNumber + Numbers.MESSAGE_1);
+                b = goToBackOrQuit(b);
             } else if (programNumber < yourNumber) {
-                System.out.println("Program number :" + programNumber + " Your number:" + yourNumber + " Your number is too big. Please, try again..");
-                System.out.println("Type 0 to back   or enter something to exit :");
-                b = scanner.nextInt();
-                scanner.nextLine();
+                System.out.println("Program number :" + programNumber + " Your number:" + yourNumber + Numbers.MESSAGE_2);
+                b = goToBackOrQuit(b);
             } else {
                 System.out.println(" Congratulations," + name + " !.");
-                System.out.println("Type 0 to back   or enter something to exit :");
-                b = scanner.nextInt();
-                scanner.nextLine();
+                b = goToBackOrQuit(b);
             }
         } while (b == 0);
     }
 
-    public static void storeNumber(int a) {
+    public static void saveNumber(int a) {
 
         arr[index] = a;
         index++;
@@ -58,5 +59,11 @@ public class Numbers {
             System.out.print(arr[i] + " ");
         }
         System.out.println();
+    }
+
+    public static int goToBackOrQuit(int b) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Type 0 to back   or enter something to exit:");
+        return b = scanner.nextInt();
     }
 }
