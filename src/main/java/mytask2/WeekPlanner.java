@@ -6,32 +6,48 @@ public class WeekPlanner {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        String[][] schedule = new String[7][2];
-        schedule[0][0] = "Monday";
-        schedule[0][1] = "Do homework";
-        schedule[1][0] = "Tuesday";
-        schedule[1][1] = "go to football";
-        schedule[2][0] = "Wednesday";
-        schedule[2][1] = "go to swim";
-        schedule[3][0] = "Thursday";
-        schedule[3][1] = "go to walk";
-        schedule[4][0] = "Friday";
-        schedule[4][1] = "go to run";
-        schedule[5][0] = "Saturday";
-        schedule[5][1] = "go to course";
-        schedule[6][0] = "Sunday";
-        schedule[6][1] = "watch a flim";
+        String[] schedule = new String[7];
+        schedule[0] = "Your tasks for Monday:do homework";
+        schedule[1] = "Your tasks for Tuesday:go to football";
+        schedule[2] = "Your tasks for Wednesday:go to swim";
+        schedule[3] = "Your tasks for Thursday:go to walk";
+        schedule[4] = "Your tasks for Friday:go to run";
+        schedule[5] = "Your tasks for Saturday:go to course";
+        schedule[6] = "Your tasks for Sunday:watch a film";
 
-        while (true){
-            System.out.println("Enter week day,please:");
-            int weekDay = scanner.nextInt();
-            if (weekDay > 7 || weekDay < 0) {
-                System.out.println("Pelase correct week day");
-            } else {
-                for (int j = 0; j < schedule[weekDay-1].length; j++) {
-                    System.out.println(schedule[weekDay - 1][j]);
-                }
+        boolean b = true;
+        do {
+            System.out.println("Please enter the day of the week:");
+            String weekDay = scanner.nextLine();
+            switch (weekDay.toLowerCase()) {
+                case "monday":
+                    System.out.println(schedule[0]);
+                    break;
+                case "tuesday":
+                    System.out.println(schedule[1]);
+                    break;
+                case "wednesday":
+                    System.out.println(schedule[2]);
+                    break;
+                case "thursday":
+                    System.out.println(schedule[3]);
+                    break;
+                case "friday":
+                    System.out.println(schedule[4]);
+                    break;
+                case "saturday":
+                    System.out.println(schedule[5]);
+                    break;
+                case "sunday":
+                    System.out.println(schedule[6]);
+                    break;
+                case "exit":
+                    b = false;
+                    break;
+                default:
+                    System.out.println("Sorry, I don't understand you, try again.");
             }
-        }
+        } while (b);
+
     }
 }
